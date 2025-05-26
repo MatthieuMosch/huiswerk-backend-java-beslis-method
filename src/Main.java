@@ -15,7 +15,7 @@ public class Main {
         positiveOrZeroOrNegative(number);
         bartender(name);
         sum(input1, input2);
-        // bonus
+        // bonus ifelse
         evenOrOdd(number);
         System.out.println(number + " equals grade " + grade(number));
         System.out.println(greatest(input1, input2) + " is the greatest of " + input1 + " and " + input2);
@@ -32,6 +32,12 @@ public class Main {
         System.out.println(triangleType(12,24,12));
         System.out.println(input1 + " " + operator + " " + input2 + " = "
                 + calculator(input1,input2, operator));
+        //bonus loops
+        System.out.println("Sum to 100 = " + sumTo(100));
+        printPowersOf(2);
+        printPrimes(100);
+        printFibonacci(10);
+        printTree(5);
     }
 
     private static void hello() {
@@ -78,7 +84,7 @@ public class Main {
         System.out.println(input1 + " + " + input2 + " = " + (input1 + input2));
     }
 
-    // bonus
+    // bonus ifelse
 
     private static void evenOrOdd(int number) {
         if (number % 2 == 0) {
@@ -181,6 +187,84 @@ public class Main {
         } else {
             System.out.println(operator + " is not a valid operator.");
             return 0;
+        }
+    }
+
+    // bonus loops
+
+    // antwoord 1 : for loop
+    private static int sumTo(int number) {
+        // calculate the sum of all numbers from 1 to number including number
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    // antwoord 2 : do-while loop
+    private static void printPowersOf(int number) {
+        System.out.println("Powers of " + number);
+        int result = 1;
+        System.out.print(result);
+        result *= number;
+        while (result < 1000) {
+            System.out.print("," + result);
+            result *= number;
+        }
+        System.out.println("");
+    }
+
+    // antwoord 3 : for loop tot lengte van de lijst en als gevonden boolean op true zetten en break
+
+    // antwoord 4 : for loop tot array.length
+
+    // antwoord 5 : for loop tot lengte van de lijst en break als lege string gevonden
+
+    // antwoord 6 : for loop tot 100 en een for loop tot en met de wortel van het getal
+    private static void printPrimes(int number) {
+        System.out.println("All prime numbers to " + number);
+        System.out.print("1");
+        for (int i = 2; i < number; i++) {
+            if (isPrime(i)) {
+                System.out.print("," + i);
+            }
+        }
+        System.out.println("");
+    }
+
+    private static boolean isPrime(int number) {
+        for (int i = 2; i <= Math.sqrt(number); i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // antwoord 7 : for loop tot lengte van de lijst met if (i>45) {}
+
+    // antwoord 8 : for loop : for (int i = 10; i > 0; i--) {}
+
+    // antwoord 9 : for loop
+    private static void printFibonacci(int number) {
+        int a = 0;
+        int b = 1;
+        System.out.println("the first " + number + " fibonacci numbers are: ");
+        System.out.print(a);
+        for (int i = 2; i <= number; i++) {
+            System.out.print("," + b);
+            b = a + b;
+            a = b - a;
+        }
+        System.out.println("");
+    }
+
+    // antwoord 10 : for loop
+    private static void printTree(int rows) {
+        for (int i = 1; i <= rows; i++) {
+            System.out.print(" ".repeat(rows-i));
+            System.out.println("*".repeat(i*2-1));
         }
     }
 }
